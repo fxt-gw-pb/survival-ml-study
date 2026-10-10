@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survival ML Training"
+  short_description: "Train eight survival learners and export risk scores"
+  default_prompt: "Use $survival-ml-train to train and compare survival models."

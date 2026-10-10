@@ -1,0 +1,4 @@
+interface:
+  display_name: "CoxPH 模型"
+  short_description: "Fit a transparent Cox proportional hazards benchmark"
+  default_prompt: "Use $pang-survml-coxph to complete this module with audited data and reproducible outputs."

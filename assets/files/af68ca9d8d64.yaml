@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survival ML Data"
+  short_description: "Audit and split censored survival datasets safely"
+  default_prompt: "Use $survival-ml-data to audit and split my Time/Event dataset."

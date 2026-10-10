@@ -1,0 +1,4 @@
+interface:
+  display_name: "生存模型 SHAP"
+  short_description: "Explain survival risk scores with model-specific SHAP"
+  default_prompt: "Use $pang-survml-shap to complete this module with audited data and reproducible outputs."

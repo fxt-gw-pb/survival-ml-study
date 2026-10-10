@@ -1,0 +1,11 @@
+#!/usr/bin/env Rscript
+args <- commandArgs(trailingOnly = TRUE)
+if (!length(args)) stop("Usage: Rscript check_selection_inputs.R TRAIN.csv")
+d <- read.csv(args[[1]], check.names = FALSE)
+stopifnot(all(c("Time", "Event") %in% names(d)), is.numeric(d$Time), is.numeric(d$Event))
+if (any(d$Time <= 0) || anyNA(d[, c("Time", "Event")])) stop("Invalid survival outcome")
+pred <- setdiff(names(d), c("Time", "Event"))
+events <- sum(d$Event == 1)
+cat("Rows:", nrow(d), " Events:", events, " Candidate predictors:", length(pred), "\n")
+cat("Crude events per candidate predictor:", round(events / max(1, length(pred)), 2), "\n")
+cat("Packages survival/glmnet:", requireNamespace("survival", quietly=TRUE), requireNamespace("glmnet", quietly=TRUE), "\n")

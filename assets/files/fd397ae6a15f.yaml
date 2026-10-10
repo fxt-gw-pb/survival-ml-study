@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survival ML Calibration DCA"
+  short_description: "Evaluate calibration and decision curve clinical utility"
+  default_prompt: "Use $survival-ml-calibration-dca to assess calibration and DCA."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "LASSO-Cox 筛选"
+  short_description: "Select survival predictors with cross-validated LASSO"
+  default_prompt: "Use $pang-survml-lasso to complete this module with audited data and reproducible outputs."

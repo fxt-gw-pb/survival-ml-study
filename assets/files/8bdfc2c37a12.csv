@@ -1,0 +1,24 @@
+source_file,start_line,end_line,content,assigned_skill
+1.生存机器学习模型3.0版本.R,12,49,packages and working directory,pang-survml-environment
+1.生存机器学习模型3.0版本.R,50,87,data import factor encoding split,pang-survml-data
+1.生存机器学习模型3.0版本.R,88,105,univariable multivariable Cox,pang-survml-cox-screen
+1.生存机器学习模型3.0版本.R,106,128,nomogram and risk score,pang-survml-nomogram
+1.生存机器学习模型3.0版本.R,129,257,LASSO selection and plots,pang-survml-lasso
+1.生存机器学习模型3.0版本.R,260,272,random survival forest,pang-survml-rsf
+1.生存机器学习模型3.0版本.R,274,283,survival GBM,pang-survml-gbm
+1.生存机器学习模型3.0版本.R,288,291,Cox proportional hazards,pang-survml-coxph
+1.生存机器学习模型3.0版本.R,295,305,CoxBoost,pang-survml-coxboost
+1.生存机器学习模型3.0版本.R,311,322,Survival-SVM,pang-survml-survivalsvm
+1.生存机器学习模型3.0版本.R,327,345,XGBoost Cox,pang-survml-xgboost
+1.生存机器学习模型3.0版本.R,348,365,SuperPC,pang-survml-superpc
+1.生存机器学习模型3.0版本.R,368,373,PLS-R Cox,pang-survml-plsrcox
+1.生存机器学习模型3.0版本.R,381,401,prediction tables,pang-survml-predictions
+1.生存机器学习模型3.0版本.R,406,653,SHAP wrappers and plots,pang-survml-shap
+1.生存机器学习模型3.0版本.R,655,747,time-dependent AUC,pang-survml-time-auc
+1.生存机器学习模型3.0版本.R,751,814,time-dependent C-index,pang-survml-cindex
+1.生存机器学习模型3.0版本.R,818,895,calibration,pang-survml-calibration
+1.生存机器学习模型3.0版本.R,898,986,decision curve analysis,pang-survml-dca
+1.生存机器学习模型3.0版本.R,988,1190,horizon ROC,pang-survml-roc
+1.生存机器学习模型3.0版本.R,1193,1283,Kaplan-Meier risk groups,pang-survml-km
+Survival_ML_model.RData,NA,NA,legacy Lasso-Cox model,pang-survml-lasso-cox
+Survival_ML_model_SHAP.RData,NA,NA,PLS-R Cox Shiny ui and server,pang-survml-individual-predictor

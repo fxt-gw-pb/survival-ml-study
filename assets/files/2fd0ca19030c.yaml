@@ -1,0 +1,4 @@
+interface:
+  display_name: "生存模型校准"
+  short_description: "Assess fixed absolute-risk calibration without refitting"
+  default_prompt: "Use $pang-survml-calibration to complete this module with audited data and reproducible outputs."

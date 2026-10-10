@@ -1,0 +1,4 @@
+interface:
+  display_name: "PLS-R Cox 模型"
+  short_description: "Cross-validate partial least-squares Cox regression"
+  default_prompt: "Use $pang-survml-plsrcox to complete this module with audited data and reproducible outputs."

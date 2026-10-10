@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survival ML Setup"
+  short_description: "Audit R packages paths and reproducible runtime setup"
+  default_prompt: "Use $survival-ml-setup to audit my R survival modeling environment."

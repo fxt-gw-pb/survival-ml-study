@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cox 列线图"
+  short_description: "Build a horizon-correct Cox nomogram and risk scores"
+  default_prompt: "Use $pang-survml-nomogram to complete this module with audited data and reproducible outputs."

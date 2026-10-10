@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survival ML Discrimination"
+  short_description: "Evaluate time AUC C-index and horizon ROC curves"
+  default_prompt: "Use $survival-ml-discrimination to evaluate survival model discrimination."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "XGBoost Cox 模型"
+  short_description: "Train Cox boosted trees with valid early stopping"
+  default_prompt: "Use $pang-survml-xgboost to complete this module with audited data and reproducible outputs."

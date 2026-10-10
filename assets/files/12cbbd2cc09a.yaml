@@ -1,0 +1,4 @@
+interface:
+  display_name: "生存机器学习预测"
+  short_description: "基于R的八模型生存预测、内部验证、SHAP解释与全套评估图工作流"
+  default_prompt: "Use $survival-machine-learning to audit my survival dataset and run a reproducible train/test prediction workflow."

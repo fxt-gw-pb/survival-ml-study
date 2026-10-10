@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survival ML KM"
+  short_description: "Plot audited Kaplan Meier risk-stratification curves"
+  default_prompt: "Use $survival-ml-km to create train-derived risk-group KM plots."

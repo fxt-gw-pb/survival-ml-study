@@ -1,0 +1,4 @@
+interface:
+  display_name: "时间依赖 ROC"
+  short_description: "Create censoring-aware ROC curves at fixed horizons"
+  default_prompt: "Use $pang-survml-roc to complete this module with audited data and reproducible outputs."

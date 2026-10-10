@@ -1,0 +1,95 @@
+<jquery >
+<div class=container-fluid>
+<head >
+<title >
+PLS-R Cox Survival Prediction
+<h2 >
+PLS-R Cox Survival Prediction
+<div class=row>
+<div class=col-sm-4>
+<form class=well role=complementary>
+<h4 >
+Patient Information
+<div class=form-group shiny-input-container>
+<label class=control-label id=Age-label for=Age>
+Age
+<div >
+<select id=Age class=shiny-input-select>
+<option value="0" selected>&lt;65</option>
+<option value="1">&gt;=65</option>
+<script type=application/json data-for=Age data-nonempty=>
+{"plugins":["selectize-plugin-a11y"]}
+<div class=form-group shiny-input-container>
+<label class=control-label id=Race-label for=Race>
+Race
+<div >
+<select id=Race class=shiny-input-select>
+<option value="1" selected>White</option>
+<option value="2">Black</option>
+<option value="3">Other</option>
+<script type=application/json data-for=Race data-nonempty=>
+{"plugins":["selectize-plugin-a11y"]}
+<div class=form-group shiny-input-container>
+<label class=control-label id=Grade-label for=Grade>
+Grade
+<div >
+<select id=Grade class=shiny-input-select>
+<option value="1" selected>I</option>
+<option value="2">II</option>
+<option value="3">III</option>
+<option value="4">IV</option>
+<script type=application/json data-for=Grade data-nonempty=>
+{"plugins":["selectize-plugin-a11y"]}
+<div class=form-group shiny-input-container>
+<label class=control-label id=Surgery-label for=Surgery>
+Surgery
+<div >
+<select id=Surgery class=shiny-input-select>
+<option value="0" selected>No</option>
+<option value="1">Yes</option>
+<script type=application/json data-for=Surgery data-nonempty=>
+{"plugins":["selectize-plugin-a11y"]}
+<div class=form-group shiny-input-container>
+<label class=control-label id=Chemotherapy-label for=Chemotherapy>
+Chemotherapy
+<div >
+<select id=Chemotherapy class=shiny-input-select>
+<option value="0" selected>No</option>
+<option value="1">Yes</option>
+<script type=application/json data-for=Chemotherapy data-nonempty=>
+{"plugins":["selectize-plugin-a11y"]}
+<div class=form-group shiny-input-container>
+<label class=control-label id=Marital-label for=Marital>
+Marital
+<div >
+<select id=Marital class=shiny-input-select>
+<option value="0" selected>No</option>
+<option value="1">Yes</option>
+<script type=application/json data-for=Marital data-nonempty=>
+{"plugins":["selectize-plugin-a11y"]}
+<div class=form-group shiny-input-container>
+<label class=control-label id=SEER_stage-label for=SEER_stage>
+SEER stage
+<div >
+<select id=SEER_stage class=shiny-input-select>
+<option value="1" selected>Localized</option>
+<option value="2">Regional</option>
+<option value="3">Distant</option>
+<script type=application/json data-for=SEER_stage data-nonempty=>
+{"plugins":["selectize-plugin-a11y"]}
+<div class=form-group shiny-input-container>
+<label class=control-label id=Tumor_size-label for=Tumor_size>
+Tumor size
+<div >
+<select id=Tumor_size class=shiny-input-select>
+<option value="0" selected>&lt;50mm</option>
+<option value="1">&gt;=50mm</option>
+<script type=application/json data-for=Tumor_size data-nonempty=>
+{"plugins":["selectize-plugin-a11y"]}
+<button id=predict type=button class=btn btn-default action-button>
+Predict
+<div class=col-sm-8 role=main>
+<h3 >
+Survival Probability
+<div id=surv_table class=shiny-html-output shiny-table-output>
+<div id=surv_curve class=shiny-plot-output style=width:100%;height:400px; class=html-fill-item>

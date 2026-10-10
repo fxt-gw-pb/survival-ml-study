@@ -1,0 +1,11 @@
+
+
+1.将CoxBoost-master.zip文件放至桌面
+2.将其解压至“当前文件夹”
+3.打开R脚本设置到这个文件夹的路径，例如“C:\\Users\\Administrator\\Desktop\\CoxBoost-master”
+4.运行脚本即可
+
+
+survcomp包的安装
+if (!require("BiocManager", quietly = TRUE))install.packages("BiocManager")
+BiocManager::install("survcomp")

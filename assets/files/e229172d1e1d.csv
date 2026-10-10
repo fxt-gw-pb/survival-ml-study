@@ -1,0 +1,7 @@
+"file","columns"
+"data.csv","Time|Event|Age|Race|Gender|Grade|Surgery|Radiotherapy|Chemotherapy|Marital|AJCC_stage|T_stage|N_stage|M_stage|SEER_stage|Fibrosis_score|Tumor_size|Income"
+"Test_plot_data.csv","Time|Event|Coxph|CoxBoost|RSF|GBM|Survivalsvm|xgboost|superpc|plsRcox"
+"testdata.csv","Time|Event|Age|Race|Gender|Grade|Surgery|Radiotherapy|Chemotherapy|Marital|AJCC_stage|T_stage|N_stage|M_stage|SEER_stage|Fibrosis_score|Tumor_size|Income"
+"Train_plot_data.csv","Time|Event|Coxph|CoxBoost|RSF|GBM|Survivalsvm|xgboost|superpc|plsRcox"
+"traindata.csv","Time|Event|Age|Race|Gender|Grade|Surgery|Radiotherapy|Chemotherapy|Marital|AJCC_stage|T_stage|N_stage|M_stage|SEER_stage|Fibrosis_score|Tumor_size|Income"
+"训练集单因素多因素Cox回归.csv","name|desc|stats|id|HR (univariable)|HR (multivariable)"

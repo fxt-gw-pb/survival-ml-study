@@ -1,0 +1,4 @@
+interface:
+  display_name: "Survival ML SHAP"
+  short_description: "Explain survival model predictions with SHAP workflows"
+  default_prompt: "Use $survival-ml-shap to explain fitted survival models."

@@ -1,0 +1,6 @@
+args<-commandArgs(trailingOnly=TRUE);if(length(args)<2)stop("Usage: cox_screen.R <data.csv> <out> [comma predictors]");if(!requireNamespace("survival",quietly=TRUE))stop("Install survival")
+d<-read.csv(args[1],check.names=FALSE);out<-args[2];vars<-if(length(args)>=3)strsplit(args[3],",",fixed=TRUE)[[1]]else setdiff(names(d),c("Time","Event"));dir.create(out,recursive=TRUE,showWarnings=FALSE)
+tidy<-function(fit,label){s<-summary(fit);data.frame(model=label,term=rownames(s$coefficients),coef=s$coefficients[,"coef"],HR=s$conf.int[,"exp(coef)"],lower95=s$conf.int[,"lower .95"],upper95=s$conf.int[,"upper .95"],p=s$coefficients[,"Pr(>|z|)"],row.names=NULL)}
+uni<-do.call(rbind,lapply(vars,function(v)tryCatch(tidy(survival::coxph(as.formula(paste("survival::Surv(Time,Event)~",v)),d),v),error=function(e)data.frame(model=v,term=NA,coef=NA,HR=NA,lower95=NA,upper95=NA,p=NA))))
+fit<-survival::coxph(as.formula(paste("survival::Surv(Time,Event)~",paste(vars,collapse="+"))),d,x=TRUE);multi<-tidy(fit,"multivariable")
+write.csv(uni,file.path(out,"univariable_cox.csv"),row.names=FALSE);write.csv(multi,file.path(out,"multivariable_cox.csv"),row.names=FALSE);write.csv(as.data.frame(survival::cox.zph(fit)$table),file.path(out,"ph_test.csv"));saveRDS(fit,file.path(out,"multivariable_cox.rds"))

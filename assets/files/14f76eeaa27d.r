@@ -1,0 +1,85 @@
+# Extracted verbatim from 小庞统计——生存机器学习预测3.0版本
+## Preserve for provenance; adapt a working copy before execution.
+
+setwd("D:\\小庞统计文件\\小庞统计——启梦R课程\\小庞统计生存机器学习课程\\小庞统计——生存机器学习预测3.0版本")
+
+###############################################################################################
+#######训练集和测试集划分
+data = read.csv("data.csv",check.names = F,encoding = "GBK")
+table(is.na(data))  #检查数据是否有缺失值
+
+
+table(data$Income)
+#对变量进行因子化,注意不需要对生存结局因子化
+data$Age = factor(data$Age,levels = c(0,1),labels = c('<65','>=65'))
+data$Race = factor(data$Race,levels = c(1,2,3),labels = c('White','Black','Other'))
+data$Gender = factor(data$Gender,levels = c(0,1),labels = c('Female','Male'))
+data$Grade = factor(data$Grade,levels = c(1,2,3,4),labels = c('GreadI','GreadII','GreadIII','GreadIV'))
+data$Surgery = factor(data$Surgery,levels = c(0,1),labels = c('No','Yes'))
+
+data$Radiotherapy = factor(data$Radiotherapy,levels = c(0,1),labels = c('No/Unknown','Yes'))
+data$Chemotherapy = factor(data$Chemotherapy,levels = c(0,1),labels = c('No/Unknown','Yes'))
+data$Marital = factor(data$Marital,levels = c(0,1),labels = c('Married','Others'))
+data$AJCC_stage = factor(data$AJCC_stage,levels = c(1,2,3,4),labels = c('I','II','III','IV'))
+data$T_stage = factor(data$T_stage,levels = c(1,2,3,4),labels = c('T1','T2','T3','T4'))
+
+data$N_stage = factor(data$N_stage,levels = c(0,1),labels = c('N0','N1'))
+data$M_stage = factor(data$M_stage,levels = c(0,1),labels = c('M0','M1'))
+data$SEER_stage = factor(data$SEER_stage,levels = c(1,2,3),labels = c('Localized','Regional','Distant'))
+data$Fibrosis_score = factor(data$Fibrosis_score,levels = c(0,1),labels = c('No','Yes'))
+data$Tumor_size = factor(data$Tumor_size,levels = c(0,1),labels = c('<50mm','>=50mm'))
+
+data$Income = factor(data$Income,levels = c(1,2,3),labels = c('$<3500','$3500~4999','$>5000'))
+
+#划分数据集
+set.seed(123)#设置随机数
+inTrain<-createDataPartition(y=data[,"Event"], p=0.7, list=F)#划分训练集,设置训练集的比例为0.7
+traindata<-data[inTrain,]#提取训练集数据
+testdata<-data[-inTrain,]#提取验证集数据
+write.csv(traindata,"traindata.csv",row.names = F)#保存训练集数据
+write.csv(testdata,"testdata.csv",row.names = F)#保存验证集数据
+
+
+
+#################################################################
+######对训练集数据进行单因素、多因素Cox筛选有意义的预后变量
+rt=traindata
+cox_fit = coxph(Surv(Time,Event)~.,data=rt)
+
+#在上面我们选择单因素里面P值小于0.05的进入多因素Cox回归分析
+reuslt_cox = autoReg(cox_fit,uni=TRUE,milti=TRUE,threshold=0.05)
+reuslt_cox
+write.csv(reuslt_cox,"训练集单因素多因素Cox回归.csv",row.names = F)
+##########################################################################
+#########提取有意义的变量
+colnames(traindata)
+
+#修改定义有意义的变量(若多因素有意义结果较少，可以选择单因素有意义的变量放入)
+sigvar=c("Age","Race","Grade","Surgery","Chemotherapy","Marital","SEER_stage","Tumor_size")
+
+
+
+#构建Nomogram模型
+library(regplot)
+fmla = as.formula(paste("Surv(Time, Event)~", paste(sigvar, collapse= "+")))#使用有意义的变量构建模型
+res.cox = coxph( fmla , data = traindata)
+nom1 = regplot(res.cox,
+             plots = c("density", "boxes"),
+             clickable=F,
+             title="",
+             points=TRUE,
+             droplines=TRUE,
+             #observation=rttrain[20,],
+             rank="sd",
+             dencol="#00bdcd",boxcol="#f88421",
+             failtime = c(1,3,5),
+             prfail = F)
+
+Nomo_train = traindata[,c(1,2)]
+Nomo_test = testdata[,c(1,2)]
+#列线图风险打分
+Nomo_train$Nomogram = predict(res.cox, newdata=traindata, type="risk")
+Nomo_test$Nomogram = predict(res.cox, newdata=testdata, type="risk")
+
+
+########################################################################

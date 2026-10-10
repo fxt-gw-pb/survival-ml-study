@@ -1,0 +1,4 @@
+interface:
+  display_name: "生存预测表"
+  short_description: "Validate locked scores and horizon-risk predictions"
+  default_prompt: "Use $pang-survml-predictions to complete this module with audited data and reproducible outputs."
